@@ -1,7 +1,6 @@
 // Variables
 var bombNumbers = [];
 var guessed = [];
-var score = 0;
 
 // Generate 16 unique random numbers from 1 to 100
 for (var i = 0; i < 16; i++){
@@ -19,15 +18,11 @@ console.log("Bomb numbers: ", bombNumbers);
 for (var i = 0; i < 83; i++) {
   var guess = parseInt(prompt('Inserisci un numero da 1 a 100'));
   var goodGuess = verify(guess, guessed);
-  // If the inputted number is among the numbers generated earlier, the user loses...
+  // If the inputted number is among the numbers generated earlier, the user loses, if not, continue asking numbers.
   if (bombNumbers.includes(guess)) {
     //User's total score
-    console.log('You lose, score: ', score);
+    console.log('You lose, score: ', guessed.length - 1);
     break;
-  }
-  // ...If not, continue asking numbers.
-  else {
-    score = score + 1;
   }
 }
 console.log("Guessed numbers: ", guessed);
@@ -44,6 +39,9 @@ function verify(inpt, arr) {
   }
   else if (guessed.includes(inpt)) {
     not = alert("Il numero non può essere scritto più di una volta");
+  }
+  else if (inpt <= 0 || inpt > 100) {
+    not = alert("Devi inserire un numero da 1 a 100.");
   }
   else {
     arr.push(inpt);
