@@ -1,0 +1,22 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Turret Road';
+}
+
+body {
+  background-color: #1a1a1a;
+  color: greenyellow;
+  padding: 10px;
+}
+
+.container {
+  width: 50%;
+  text-align: center;
+  margin: 150px auto;
+}
+
+h1 {
+  font-size: 40px;
+}

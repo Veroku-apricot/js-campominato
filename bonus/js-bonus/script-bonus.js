@@ -7,7 +7,7 @@ var score = document.getElementById('score');
 // Ask difficulty
 for (var i = 0; i < 1; i++){
   var difficulty = parseInt(prompt('Scegli difficoltà: Inserisci numero tra 0 (Facile), 1 (Media) e 2 (Difficile).'));
-  verifyDif(difficulty, 3);
+  verifyDif(difficulty, 2);
   if (difficulty === 0) {
     var lvNumbers = 100;
   }
@@ -21,6 +21,7 @@ for (var i = 0; i < 1; i++){
     i--;
   }
 }
+document.getElementById('displayDiff').innerHTML = "Selected difficulty: " + difficulty + " - Total Numbers: " + lvNumbers;
 console.log("Selected difficulty: ", difficulty, "Total Numbers: ", lvNumbers);
 
 // Generate 16 unique random numbers from 1 to a max according to selected difficulty (lvNumbers)
@@ -43,13 +44,13 @@ for (i = 0; i < (lvNumbers - 16); i++) {
   if (bombNumbers.includes(guess)) {
     //User's total score
     endGame.innerHTML = "YOU LOSE";
-    score.innerHTML = "Total Score: " + (guessed.length -1);
+    score.innerHTML = "Total Score: " + (guessed.length -1) + " / " + (lvNumbers - 16);
     console.log('You lose, score: ', guessed.length - 1);
     break;
   }
   else if (guessed.length === (lvNumbers - 16)){
     endGame.innerHTML = "YOU WIN";
-    score.innerHTML = "Total Score: " + guessed.length;
+    score.innerHTML = "Total Score: " + guessed.length + " / " + (lvNumbers - 16);
     console.log('You win, score: ', guessed.length);
   }
 }
@@ -68,7 +69,7 @@ function verifyDif(inpt, lvl) {
     var not = alert("Devi inserire un numero");
   }
   else if (inpt < 0 || inpt > lvl) {
-    not = alert("Devi inserire un numero da 1 a " + lvl);
+    not = alert("Devi inserire un numero da 0 a " + lvl);
   }
 }
 
