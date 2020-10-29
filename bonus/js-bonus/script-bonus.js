@@ -21,7 +21,7 @@ for (var i = 0; i < 1; i++){
     i--;
   }
 }
-document.getElementById('displayDiff').innerHTML = "Selected difficulty: " + difficulty + " - Total Numbers: " + lvNumbers;
+document.getElementById('displayDiff').innerHTML = "Difficoltà selezionata: " + difficulty + " - Totale Numeri: " + lvNumbers;
 console.log("Selected difficulty: ", difficulty, "Total Numbers: ", lvNumbers);
 
 // Generate 16 unique random numbers from 1 to a max according to selected difficulty (lvNumbers)
@@ -43,14 +43,14 @@ for (i = 0; i < (lvNumbers - 16); i++) {
   // If the inputted number is among the numbers generated earlier, the user loses, if not, continue asking numbers.
   if (bombNumbers.includes(guess)) {
     //User's total score
-    endGame.innerHTML = "YOU LOSE";
-    score.innerHTML = "Total Score: " + (guessed.length -1) + " / " + (lvNumbers - 16);
+    endGame.innerHTML = "HAI PERSO";
+    score.innerHTML = "Punteggio Totale: " + (guessed.length -1) + " / " + (lvNumbers - 16);
     console.log('You lose, score: ', guessed.length - 1);
     break;
   }
   else if (guessed.length === (lvNumbers - 16)){
-    endGame.innerHTML = "YOU WIN";
-    score.innerHTML = "Total Score: " + guessed.length + " / " + (lvNumbers - 16);
+    endGame.innerHTML = "HAI VINTO";
+    score.innerHTML = "Punteggio Totale: " + guessed.length + " / " + (lvNumbers - 16);
     console.log('You win, score: ', guessed.length);
   }
 }
