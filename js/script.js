@@ -15,7 +15,7 @@ for (var i = 0; i < 16; i++){
 console.log("Bomb numbers: ", bombNumbers);
 
 // Ask a number from 1 to 100.
-for (var i = 0; i < 83; i++) {
+for (var i = 0; i < 84; i++) {
   var guess = parseInt(prompt('Inserisci un numero da 1 a 100'));
   var goodGuess = verify(guess, guessed);
   // If the inputted number is among the numbers generated earlier, the user loses, if not, continue asking numbers.
@@ -23,6 +23,9 @@ for (var i = 0; i < 83; i++) {
     //User's total score
     console.log('You lose, score: ', guessed.length - 1);
     break;
+  }
+  else if (guessed.length === 84){
+    console.log('You win, score: ', guessed.length);
   }
 }
 console.log("Guessed numbers: ", guessed);
