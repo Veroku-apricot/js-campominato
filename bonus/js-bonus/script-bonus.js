@@ -36,7 +36,7 @@ for (i = 0; i < 16; i++){
 }
 console.log("Bomb numbers: ", bombNumbers);
 
-// Ask a number from 1 to 100.
+// Ask a number from 1 to a max according to selected difficulty (lvNumbers)
 for (i = 0; i < (lvNumbers - 16); i++) {
   var guess = parseInt(prompt('Inserisci un numero da 1 a ' + lvNumbers));
   var goodGuess = verify(guess, guessed, lvNumbers);
