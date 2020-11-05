@@ -5,39 +5,42 @@ var endGame = document.getElementById('endgame');
 var score = document.getElementById('score');
 
 // Ask difficulty
-for (var i = 0; i < 1; i++){
+var i = 0;
+while (i < 1){
   var difficulty = parseInt(prompt('Scegli difficoltà: Inserisci numero tra 0 (Facile), 1 (Media) e 2 (Difficile).'));
   verifyDif(difficulty, 2);
   if (difficulty === 0) {
     var lvNumbers = 100;
+    i++;
   }
   else if (difficulty === 1){
     lvNumbers = 80;
+    i++;
   }
   else if (difficulty === 2){
     lvNumbers = 50;
-  }
-  else {
-    i--;
+    i++;
   }
 }
 document.getElementById('displayDiff').innerHTML = "Difficoltà selezionata: " + difficulty + " - Totale Numeri: " + lvNumbers;
 console.log("Selected difficulty: ", difficulty, "Total Numbers: ", lvNumbers);
 
 // Generate 16 unique random numbers from 1 to a max according to selected difficulty (lvNumbers)
-for (i = 0; i < 16; i++){
-  var bomb = generateNumber(lvNumbers);
+var i = 0;
+while (i < 16){
+  var bomb = generateNumber(100);
   if (bombNumbers.includes(bomb)) {
-    i--;
   }
   else {
     bombNumbers.push(bomb);
+    i++;
   }
 }
 console.log("Bomb numbers: ", bombNumbers);
 
 // Ask a number from 1 to a max according to selected difficulty (lvNumbers)
-for (i = 0; i < (lvNumbers - 16); i++) {
+var l = 1;
+while (l <= (lvNumbers - 16)) {
   var guess = parseInt(prompt('Inserisci un numero da 1 a ' + lvNumbers));
   var goodGuess = verify(guess, guessed, lvNumbers);
   // If the inputted number is among the numbers generated earlier, the user loses, if not, continue asking numbers.
@@ -46,12 +49,16 @@ for (i = 0; i < (lvNumbers - 16); i++) {
     endGame.innerHTML = "HAI PERSO";
     score.innerHTML = "Punteggio Totale: " + (guessed.length -1) + " / " + (lvNumbers - 16);
     console.log('You lose, score: ', guessed.length - 1);
-    break;
+    l = (lvNumbers - 16) + 1;
   }
   else if (guessed.length === (lvNumbers - 16)){
     endGame.innerHTML = "HAI VINTO";
     score.innerHTML = "Punteggio Totale: " + guessed.length + " / " + (lvNumbers - 16);
     console.log('You win, score: ', guessed.length);
+    l++;
+  }
+  else {
+    l++;
   }
 }
 console.log("Guessed numbers: ", guessed);
